@@ -7,7 +7,7 @@
 </ul>
 <?php endif; ?>
 
-<form action="<?php echo url_for('contact/new.html') ?>" class="cssform" method="post">
+<form action="<?php echo url_for('contact/new.html') ?>" class="cssform grid_12" method="post">
 
 	<fieldset>
 
@@ -34,3 +34,7 @@
 	</fieldset>
 
 </form>
+
+<section class="map grid_12">
+  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode(sfConfig::get('app_smap_center', 'Paris')) ?>&zoom=<?php echo sfConfig::get('app_smap_zoom', '12') ?>&size=<?php echo sfConfig::get('app_smap_size', '512x288') ?>&maptype=roadmap&markers=color:red%7Clabel:A%7C<?php echo urlencode(sfConfig::get('app_smap_address', '93 faubourg St Honoré, Paris')) ?>&sensor=false" />
+</section>

@@ -1,4 +1,10 @@
 all:
+  smap:
+    name:           lablackroom
+    center:         Arras
+    address:        72 rue d'amiens, 62000 Arras
+    zoom:           13
+    size:           512x288
   contact:
     form:           noreply@peanut2.local
     webmasterName:  webmaster
