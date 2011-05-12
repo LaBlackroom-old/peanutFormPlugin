@@ -8,10 +8,13 @@
  * @author     Alexandre 'pocky' BALMES
  */
 
- class contactForm extends BaseForm
+ abstract class PluginpeanutContactForm extends BaseForm
  {
-   public function configure()
+   public function setup()
    {
+     
+     parent::setup();
+     
      /*
       *  Widgets for the form
       */
