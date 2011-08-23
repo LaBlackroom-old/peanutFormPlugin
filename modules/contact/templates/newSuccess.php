@@ -9,38 +9,34 @@
 
 <form action="<?php echo url_for('contact/new.html') ?>" class="cssform grid_12" method="post">
 
-	<fieldset>
+  <fieldset>
 
-		<p>
-			<?php echo $form['name']->renderLabel() ?><br />
-			<?php echo $form['name']->render() ?>
-		</p>
+    <p>
+        <?php echo $form['name']->renderLabel() ?><br />
+        <?php echo $form['name']->render() ?>
+    </p>
 
-		<p>
-			<?php echo $form['mail']->renderLabel() ?><br />
-			<?php echo $form['mail']->render() ?>
-		</p>
+    <p>
+        <?php echo $form['mail']->renderLabel() ?><br />
+        <?php echo $form['mail']->render() ?>
+    </p>
 
-		<p>
-			<?php echo $form['message']->renderLabel() ?><br />
-			<?php echo $form['message']->render(array('class' => 'text-input textarea')) ?>
-		</p>
+    <p>
+        <?php echo $form['message']->renderLabel() ?><br />
+        <?php echo $form['message']->render(array('class' => 'text-input textarea')) ?>
+    </p>
 
-        <?php echo $form['captcha']->render() ?>
-		<?php echo $form->renderHiddenFields() ?>
+    <?php echo $form['captcha']->render() ?>
+    <?php echo $form->renderHiddenFields() ?>
 
-		<input name="Send" type="submit" value="<?php echo __('Submit', null, 'peanutForm') ?>" class="button" id="send" size="16"/>
+    <input name="Send" type="submit" value="<?php echo __('Submit', null, 'peanutForm') ?>" class="button" id="send" size="16"/>
 
-	</fieldset>
+  </fieldset>
 
 </form>
 
-<?php
-  $adr = peanutConfig::get('adr');
-  $adr = unserialize($adr);
-  
-  $adr = $adr['street-address'] . ', ' . $adr['locality'];
-?>
+<?php $adr = peanutConfig::get('map_address'); ?>
+
 <section class="map grid_12">
-  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode(sfConfig::get('app_smap_center', 'Paris')) ?>&zoom=<?php echo sfConfig::get('app_smap_zoom', '12') ?>&size=<?php echo sfConfig::get('app_smap_size', '512x288') ?>&maptype=roadmap&markers=color:red%7Clabel:A%7C<?php echo urlencode($adr) ?>&sensor=false" />
+  <img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode(peanutConfig::get('map_center')) ?>&zoom=<?php echo peanutConfig::get('map_zoom') ?>&size=<?php echo peanutConfig::get('map_size') ?>&maptype=roadmap&markers=color:red%7Clabel:A%7C<?php echo urlencode($adr) ?>&sensor=false" />
 </section>
