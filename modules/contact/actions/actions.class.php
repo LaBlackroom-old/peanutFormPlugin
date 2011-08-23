@@ -37,16 +37,16 @@ class contactActions extends sfActions
           $message = $this->getMailer();
 
           $message = Swift_Message::newInstance()
-            ->setFrom(array(sfConfig::get('app_contact_form', 'noreply@mywebsite.com')))
-            ->setTo(array(sfConfig::get('app_contact_webmasterMail', 'me@mywebsite.com') => sfConfig::get('app_contact_webmasterName', 'webmaster')))
-            ->setSubject(sfConfig::get('app_contact_subject', 'New message from your contact form'))
+            ->setFrom(array(peanutConfig::get('contact_from')))
+            ->setTo(array(peanutConfig::get('webmaster_mail') => peanutConfig::get('webmaster_name')))
+            ->setSubject(peanutConfig::get('subject'))
             ->setBody($body, 'text/html')
             ->addPart($altbody, 'text/plain');
 
           $this->getMailer()->send($message);
 
         }
-
+        
         catch (Exception $e)
         {
           $this->getUser()->setFlash('error', 'An error has occured while send your message!');
